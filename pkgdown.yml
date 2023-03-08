@@ -1,0 +1,20 @@
+pandoc: 2.19.2
+pkgdown: 2.0.7
+pkgdown_sha: ~
+articles:
+  ts_arima: ts_arima.html
+  ts_augment: ts_augment.html
+  ts_data: ts_data.html
+  ts_elm: ts_elm.html
+  ts_filter: ts_filter.html
+  ts_mlp: ts_mlp.html
+  ts_preprocessing: ts_preprocessing.html
+  ts_rf: ts_rf.html
+  ts_svm: ts_svm.html
+  ts_swfilter: ts_swfilter.html
+  ts_tune: ts_tune.html
+last_built: 2023-03-08T00:49Z
+urls:
+  reference: https://cefet-rj-dal.github.io/dal/reference
+  article: https://cefet-rj-dal.github.io/dal/articles
+
