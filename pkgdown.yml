@@ -2,6 +2,13 @@ pandoc: 2.19.2
 pkgdown: 2.0.7
 pkgdown_sha: ~
 articles:
+  cla_dtree: cla_dtree.html
+  cla_knn: cla_knn.html
+  cla_majority: cla_majority.html
+  cla_mlp: cla_mlp.html
+  cla_nb: cla_nb.html
+  cla_rf: cla_rf.html
+  cla_svm: cla_svm.html
   ts_arima: ts_arima.html
   ts_augment: ts_augment.html
   ts_data: ts_data.html
@@ -13,7 +20,7 @@ articles:
   ts_svm: ts_svm.html
   ts_swfilter: ts_swfilter.html
   ts_tune: ts_tune.html
-last_built: 2023-03-09T01:02Z
+last_built: 2023-03-12T01:33Z
 urls:
   reference: https://cefet-rj-dal.github.io/dal/reference
   article: https://cefet-rj-dal.github.io/dal/articles

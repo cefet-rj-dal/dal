@@ -41,6 +41,13 @@
 <li class="active nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
+    <a class="dropdown-item" href="../articles/cla_dtree.html">cla_dtree</a>
+    <a class="dropdown-item" href="../articles/cla_knn.html">cla_knn</a>
+    <a class="dropdown-item" href="../articles/cla_majority.html">cla_majority</a>
+    <a class="dropdown-item" href="../articles/cla_mlp.html">cla_mlp</a>
+    <a class="dropdown-item" href="../articles/cla_nb.html">cla_nb</a>
+    <a class="dropdown-item" href="../articles/cla_rf.html">cla_rf</a>
+    <a class="dropdown-item" href="../articles/cla_svm.html">cla_svm</a>
     <a class="dropdown-item" href="../articles/ts_arima.html">ts_arima</a>
     <a class="dropdown-item" href="../articles/ts_augment.html">ts_augment</a>
     <a class="dropdown-item" href="../articles/ts_data.html">ts_data</a>
@@ -169,7 +176,7 @@
 <span></span>
 <span><span class="va">io_train</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ts_projection.html">ts_projection</a></span><span class="op">(</span><span class="va">samp</span><span class="op">$</span><span class="va">train</span><span class="op">)</span></span>
 <span><span class="va">model</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fit.html">fit</a></span><span class="op">(</span><span class="va">model</span>, x<span class="op">=</span><span class="va">io_train</span><span class="op">$</span><span class="va">input</span>, y<span class="op">=</span><span class="va">io_train</span><span class="op">$</span><span class="va">output</span><span class="op">)</span></span>
-<span><span class="co">#&gt; tsreg_arima,0.006</span></span>
+<span><span class="co">#&gt; tsreg_arima,0.008</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu">describe</span><span class="op">(</span><span class="va">model</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "tsreg_arima"</span></span></code></pre></div>
