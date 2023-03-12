@@ -48,6 +48,16 @@
     <a class="dropdown-item" href="../articles/cla_nb.html">cla_nb</a>
     <a class="dropdown-item" href="../articles/cla_rf.html">cla_rf</a>
     <a class="dropdown-item" href="../articles/cla_svm.html">cla_svm</a>
+    <a class="dropdown-item" href="../articles/clu_dbscan.html">clu_dbscan</a>
+    <a class="dropdown-item" href="../articles/clu_kmeans.html">clu_kmeans</a>
+    <a class="dropdown-item" href="../articles/clu_pam.html">clu_pam</a>
+    <a class="dropdown-item" href="../articles/dal_categorical_mapping.html">dal_categorical_mapping</a>
+    <a class="dropdown-item" href="../articles/dal_normalization.html">dal_normalization</a>
+    <a class="dropdown-item" href="../articles/reg_dtree.html">reg_dtree</a>
+    <a class="dropdown-item" href="../articles/reg_knn.html">reg_knn</a>
+    <a class="dropdown-item" href="../articles/reg_mlp.html">reg_mlp</a>
+    <a class="dropdown-item" href="../articles/reg_rf.html">reg_rf</a>
+    <a class="dropdown-item" href="../articles/reg_svm.html">reg_svm</a>
     <a class="dropdown-item" href="../articles/ts_arima.html">ts_arima</a>
     <a class="dropdown-item" href="../articles/ts_augment.html">ts_augment</a>
     <a class="dropdown-item" href="../articles/ts_data.html">ts_data</a>
@@ -106,10 +116,14 @@
 <span><span class="co">#&gt; Registered S3 method overwritten by 'quantmod':</span></span>
 <span><span class="co">#&gt;   method            from</span></span>
 <span><span class="co">#&gt;   as.zoo.data.frame zoo</span></span>
+<span><span class="co">#&gt; Warning: replacing previous import 'dbscan::dbscan' by 'fpc::dbscan' when</span></span>
+<span><span class="co">#&gt; loading 'dal'</span></span>
 <span><span class="co">#&gt; Warning: replacing previous import 'dplyr::combine' by 'randomForest::combine'</span></span>
 <span><span class="co">#&gt; when loading 'dal'</span></span>
 <span><span class="co">#&gt; Warning: replacing previous import 'Matrix::cov2cor' by 'stats::cov2cor' when</span></span>
 <span><span class="co">#&gt; loading 'dal'</span></span>
+<span><span class="co">#&gt; Warning: replacing previous import 'dbscan::as.dendrogram' by</span></span>
+<span><span class="co">#&gt; 'stats::as.dendrogram' when loading 'dal'</span></span>
 <span><span class="co">#&gt; Warning: replacing previous import 'dplyr::filter' by 'stats::filter' when</span></span>
 <span><span class="co">#&gt; loading 'dal'</span></span>
 <span><span class="co">#&gt; Warning: replacing previous import 'dplyr::lag' by 'stats::lag' when loading</span></span>
@@ -195,7 +209,7 @@ this notebook.</p>
 <span></span>
 <span><span class="va">io_train</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ts_projection.html">ts_projection</a></span><span class="op">(</span><span class="va">samp</span><span class="op">$</span><span class="va">train</span><span class="op">)</span></span>
 <span><span class="va">model</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fit.html">fit</a></span><span class="op">(</span><span class="va">tune</span>, x<span class="op">=</span><span class="va">io_train</span><span class="op">$</span><span class="va">input</span>, y<span class="op">=</span><span class="va">io_train</span><span class="op">$</span><span class="va">output</span>, <span class="va">ranges</span><span class="op">)</span></span>
-<span><span class="co">#&gt; ts_maintune-ts_elm-none,0.078</span></span>
+<span><span class="co">#&gt; ts_maintune-ts_elm-none,0.082</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu">describe</span><span class="op">(</span><span class="va">model</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "ts_elm"</span></span></code></pre></div>
@@ -208,7 +222,7 @@ this notebook.</p>
 <span><span class="va">ev_adjust</span> <span class="op">&lt;-</span> <span class="fu">evaluation.tsreg</span><span class="op">(</span><span class="va">io_train</span><span class="op">$</span><span class="va">output</span>, <span class="va">adjust</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">ev_adjust</span><span class="op">$</span><span class="va">metrics</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt;            mse        smape</span></span>
-<span><span class="co">#&gt; 1 4.794186e-31 1.871233e-15</span></span></code></pre></div>
+<span><span class="co">#&gt; 1 2.146897e-29 1.660412e-14</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="prediction-of-test">Prediction of test<a class="anchor" aria-label="anchor" href="#prediction-of-test"></a>
@@ -233,7 +247,7 @@ this notebook.</p>
 <code class="sourceCode R"><span><span class="va">ev_test</span> <span class="op">&lt;-</span> <span class="fu">evaluation.tsreg</span><span class="op">(</span><span class="va">output</span>, <span class="va">prediction</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">ev_test</span><span class="op">$</span><span class="va">metrics</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt;            mse        smape</span></span>
-<span><span class="co">#&gt; 1 6.039716e-31 7.840536e-16</span></span>
+<span><span class="co">#&gt; 1 4.290664e-29 6.608452e-15</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sprintf.html" class="external-link">sprintf</a></span><span class="op">(</span><span class="st">"%s: smape: %.2f"</span>, <span class="fu">describe</span><span class="op">(</span><span class="va">model</span><span class="op">)</span>, <span class="fl">100</span><span class="op">*</span><span class="va">ev_test</span><span class="op">$</span><span class="va">metrics</span><span class="op">$</span><span class="va">smape</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "ts_elm: smape: 0.00"</span></span></code></pre></div>
 <hr>
